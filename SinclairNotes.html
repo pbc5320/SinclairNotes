@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Semantic Prosody Study Kit: Sinclair (1991) Primer + Research Toolkit</title>
+<meta name="description" content="A visual primer on Sinclair (1991) Corpus, Concordance, Collocation, plus a corpus-selection worksheet, codebook, coding sandbox, and reporting checklist for semantic prosody research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --surface:#ffffff; --ink:#1f2430; --muted:#5b6474; --line:#e6dfd3;
+  --accent:#2f5d8a; --accent-soft:#e3edf7;
+  --c1:#2f5d8a; --c2:#b4682f; --c3:#5b7f3a;
+  --c1-soft:#e3edf7; --c2-soft:#f8e9dc; --c3-soft:#e9f1de;
+  --pos:#2e7d5b; --pos-soft:#dcf1e6; --neg:#b4432f; --neg-soft:#f8e0da;
+  --hl:#fff1b8; --shadow:0 1px 2px rgba(31,36,48,.06),0 6px 18px rgba(31,36,48,.06);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171d; --surface:#1c2028; --ink:#e8eaf0; --muted:#a3abbb; --line:#2c323d;
+    --accent:#8ab8e8; --accent-soft:#22344a;
+    --c1:#8ab8e8; --c2:#e8a56f; --c3:#a7cf7d;
+    --c1-soft:#22344a; --c2-soft:#3d2d1e; --c3-soft:#2a3620;
+    --pos:#6fcf9f; --pos-soft:#1d3a2d; --neg:#f09480; --neg-soft:#452520;
+    --hl:#4a4020; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171d; --surface:#1c2028; --ink:#e8eaf0; --muted:#a3abbb; --line:#2c323d;
+  --accent:#8ab8e8; --accent-soft:#22344a;
+  --c1:#8ab8e8; --c2:#e8a56f; --c3:#a7cf7d;
+  --c1-soft:#22344a; --c2-soft:#3d2d1e; --c3-soft:#2a3620;
+  --pos:#6fcf9f; --pos-soft:#1d3a2d; --neg:#f09480; --neg-soft:#452520;
+  --hl:#4a4020; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.65;font-size:16px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;line-height:1.2;margin:0}
+h2{font-size:1.7rem;margin-bottom:.4rem}
+h3{font-size:1.1rem}
+p{margin:.5rem 0}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:62ch}
+section{margin-top:64px}
+.sec-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:.8rem;font-weight:600;margin-right:10px;vertical-align:middle}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:600}
+[hidden]{display:none!important}
+
+/* theme button */
+.topbar{display:flex;justify-content:flex-end;padding-top:14px}
+.theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer}
+
+/* hero */
+.hero{padding:24px 0 8px}
+.hero h1{font-size:clamp(2rem,6vw,3.3rem);margin:.5rem 0 1rem}
+.hero h1 span:nth-child(1){color:var(--c1)} .hero h1 span:nth-child(2){color:var(--c2)} .hero h1 span:nth-child(3){color:var(--c3)}
+.thesis{margin-top:22px;border-left:4px solid var(--accent);padding:6px 0 6px 18px;font-family:'Fraunces',Georgia,serif;font-size:1.25rem;max-width:52ch}
+.navgroup{margin-top:22px}
+.navgroup .eyebrow{margin-bottom:6px}
+nav.pills{display:flex;flex-wrap:wrap;gap:8px}
+nav.pills a{text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--surface);padding:6px 14px;border-radius:999px;font-size:.85rem}
+nav.pills a:hover{border-color:var(--accent);color:var(--accent)}
+.part{margin-top:80px;padding-top:28px;border-top:2px solid var(--line)}
+.part h2.part-title{font-size:2.1rem}
+.local-note{margin-top:14px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-size:.88rem}
+
+/* three Cs */
+.c-card{border-top:5px solid var(--c);position:relative}
+.c-card .big{font-family:'Fraunces',Georgia,serif;font-size:2.6rem;line-height:1;color:var(--c);font-weight:700}
+.c-card h3{margin:.3rem 0 .4rem}
+.c-card .def{font-size:.92rem;color:var(--muted)}
+.mini{margin-top:12px;padding:12px;border-radius:10px;background:var(--soft);font-size:.85rem}
+.dots{display:flex;gap:4px;flex-wrap:wrap}
+.dots i{width:10px;height:10px;border-radius:2px;background:var(--c);opacity:.35;display:block}
+.dots i:nth-child(3n){opacity:.9}
+.pair{display:flex;align-items:center;gap:8px;margin:3px 0}
+.ok{color:var(--pos);font-weight:700}.no{color:var(--neg);font-weight:700}
+.kw{background:var(--hl);padding:0 4px;border-radius:4px;font-weight:600}
+
+/* toggle panel */
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:4px;margin:14px 0}
+.seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.88rem;font-weight:600;padding:7px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.slots{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+.slot{min-width:110px;border:1.5px dashed var(--accent);border-radius:10px;padding:8px 10px;font-size:.85rem;text-align:center;background:var(--accent-soft)}
+.slot small{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.slot .ghost{opacity:.6;font-size:.78rem}
+.chunk{display:inline-block;border-radius:12px;background:var(--c2-soft);border:2px solid var(--c2);padding:14px 22px;font-family:'Fraunces',Georgia,serif;font-size:1.3rem}
+.principle-note{margin-top:14px;font-size:.92rem;color:var(--muted)}
+
+/* concordance */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:.85rem;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn[aria-pressed="true"],.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.kwic-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.kwic{min-width:660px}
+.kwic-row{display:grid;grid-template-columns:1fr auto 1fr;gap:0;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;border-bottom:1px solid var(--line)}
+.kwic-row:last-child{border-bottom:0}
+.kwic-row:nth-child(even){background:color-mix(in srgb,var(--line) 25%,transparent)}
+.kwic-row>span{padding:9px 10px}
+.kwic .l{text-align:right}
+.kwic .n{background:var(--hl);font-weight:600;padding:9px 14px}
+.k{padding:1px 4px;border-radius:4px;font-weight:600;transition:background .2s}
+.k.neg.on{background:var(--neg-soft);color:var(--neg)}
+.k.pos.on{background:var(--pos-soft);color:var(--pos)}
+.stat{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);font-size:.92rem}
+.caption{font-size:.8rem;color:var(--muted);margin-top:8px}
+.steps4{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:20px}
+.steps4 div{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.88rem}
+.steps4 div::before{content:counter(s);display:block;font-family:'Fraunces',Georgia,serif;font-size:1.6rem;color:var(--accent);line-height:1;margin-bottom:6px}
+
+/* layers */
+.layers{display:grid;gap:8px;margin-top:18px}
+.layer{display:flex;align-items:center;gap:14px;text-align:left;width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;padding:12px 16px;border-radius:12px;cursor:pointer;transition:transform .15s,border-color .15s}
+.layer:hover{transform:translateX(4px)}
+.layer[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.layer .no-{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--accent);width:24px}
+.layer .t{font-weight:600}
+.layer .s{font-size:.8rem;color:var(--muted);display:block}
+.layer:nth-child(5){border-left:6px solid var(--neg)}
+.layer-detail{margin-top:12px;padding:16px 18px;border-radius:12px;border:1px dashed var(--accent);background:var(--surface)}
+.origin{margin-top:20px;background:var(--c2-soft);border-left:4px solid var(--c2);border-radius:0 12px 12px 0;padding:14px 18px;font-size:.93rem}
+.prosody-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.pc{border-radius:14px;padding:14px;background:var(--surface);border:1px solid var(--line)}
+.pc .node{font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:700}
+.pc .col{font-size:.85rem;color:var(--muted);margin:4px 0 8px}
+.pc.neg .pill{background:var(--neg-soft);color:var(--neg)}
+.pc.pos .pill{background:var(--pos-soft);color:var(--pos)}
+.pc small{display:block;margin-top:8px;color:var(--muted);font-size:.75rem}
+
+/* timeline */
+.timeline{position:relative;margin-top:20px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl{position:relative;margin-bottom:18px}
+.tl::before{content:attr(data-n);position:absolute;left:-34px;top:0;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tl h3{margin-bottom:2px}
+.tl p{color:var(--muted);font-size:.92rem;margin:0}
+.tags{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.72rem;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.warn{background:var(--neg-soft);border-radius:12px;padding:14px 18px;font-size:.92rem;margin-top:16px}
+.warn ul{margin:.4rem 0 0;padding-left:1.2rem}
+
+/* toolkit forms */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+.fl{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+.f,.sbx{width:100%;font:inherit;font-size:.88rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.f:focus,.sbx:focus,textarea:focus,select:focus,input:focus{outline:2px solid var(--accent);outline-offset:1px}
+textarea.f{resize:vertical;min-height:70px}
+.hint{font-size:.75rem;color:var(--muted);margin-top:3px}
+.tbl-scroll{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:.85rem}
+table.cmp th,table.cmp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.cmp th{font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp td.rl{font-weight:600;width:28%}
+.checks{display:grid;gap:8px;margin-top:14px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:.9rem;cursor:pointer}
+.check input{margin-top:5px;accent-color:var(--accent);flex:none}
+.warnbox{margin-top:16px;padding:12px 16px;border-radius:12px;background:var(--neg-soft);font-size:.88rem}
+.cb{display:grid;gap:12px;margin-top:16px}
+.cb-item{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--cc);border-radius:12px;padding:14px 16px}
+.cb-item h3{color:var(--cc);margin-bottom:8px}
+.cb-item .fgrid{margin-top:0}
+
+/* sandbox */
+.sb-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-top:14px}
+table.sb{border-collapse:collapse;min-width:900px;width:100%;font-size:.84rem}
+table.sb th{padding:8px;text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--line)}
+table.sb td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.sb td.idx{color:var(--muted);width:32px}
+table.sb textarea{min-width:260px;min-height:52px;resize:vertical}
+.sumbox{margin-top:16px;padding:16px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.bar{display:flex;height:22px;border-radius:999px;overflow:hidden;background:var(--line);margin:10px 0}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+.kappa{margin-top:10px;font-size:.9rem}
+details.paste{margin-top:12px}
+details.paste textarea{width:100%;min-height:90px;font:inherit;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+
+/* reading list */
+.reading{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.reading li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.9rem}
+.reading b{font-family:'Fraunces',Georgia,serif}
+.reading .why{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-top:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);font-size:.92rem}
+footer{margin-top:60px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media print{
+  .topbar,nav.pills,.tools,.seg,.btn,.theme-btn{display:none!important}
+  body{background:#fff;color:#000}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="topbar"><button class="theme-btn" id="themeBtn" type="button">Theme: auto</button></div>
+
+<header class="hero">
+  <div class="eyebrow">Semantic prosody study kit · Sinclair, J. (1991) · Oxford University Press</div>
+  <h1><span>Corpus,</span> <span>Concordance,</span> <span>Collocation</span></h1>
+  <p class="lede">A visual primer on how looking at large amounts of real language changed what we think words are, followed by a working toolkit for a corpus study of semantic prosody.</p>
+  <div class="thesis">Meaning lives in patterns of use, so look at the evidence of many examples, not only at intuition.</div>
+
+  <div class="navgroup">
+    <div class="eyebrow">Part I · Concepts</div>
+    <nav class="pills">
+      <a href="#three">1 · The three Cs</a>
+      <a href="#principles">2 · Two ways to build language</a>
+      <a href="#lab">3 · Concordance lab</a>
+      <a href="#prosody">4 · Toward semantic prosody</a>
+      <a href="#workflow">5 · Workflow</a>
+    </nav>
+  </div>
+  <div class="navgroup">
+    <div class="eyebrow">Part II · Toolkit</div>
+    <nav class="pills">
+      <a href="#t-corpus">6 · Corpus selection</a>
+      <a href="#t-extract">7 · Extraction settings</a>
+      <a href="#t-codebook">8 · Codebook</a>
+      <a href="#t-sandbox">9 · Coding sandbox</a>
+      <a href="#t-report">10 · Reporting checklist</a>
+      <a href="#reading">11 · Reading path</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ PART I ============ -->
+<section id="three">
+  <h2><span class="sec-num">1</span>The three Cs</h2>
+  <p class="lede">The title names the toolkit. Each C feeds the next: you build a corpus, view it through concordances, and use them to spot collocations.</p>
+  <div class="grid3">
+    <div class="card c-card" style="--c:var(--c1);--soft:var(--c1-soft)">
+      <div class="big">C</div><h3>Corpus</h3>
+      <p class="def">A large, principled collection of real texts stored electronically: news, conversation, fiction, academic writing. It replaces invented example sentences with what people actually wrote and said.</p>
+      <div class="mini"><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div style="margin-top:8px">Many texts, one searchable body of evidence.</div></div>
+    </div>
+    <div class="card c-card" style="--c:var(--c2);--soft:var(--c2-soft)">
+      <div class="big">C</div><h3>Concordance</h3>
+      <p class="def">A display of every occurrence of a search word, lined up in the centre with its surrounding context. The format is called <b>KWIC</b>: Key Word In Context.</p>
+      <div class="mini mono" style="font-size:.72rem;line-height:1.7"><div style="text-align:center;white-space:nowrap">…fear that rot <span class="kw">set in</span> before…</div><div style="text-align:center;white-space:nowrap">…once despair <span class="kw">set in</span> among…</div><div style="text-align:center;white-space:nowrap">…and panic <span class="kw">set in</span> as the…</div></div>
+    </div>
+    <div class="card c-card" style="--c:var(--c3);--soft:var(--c3-soft)">
+      <div class="big">C</div><h3>Collocation</h3>
+      <p class="def">The tendency of words to occur near each other more often than chance would predict. It is habit, not grammar rules.</p>
+      <div class="mini">
+        <div class="pair"><span class="ok">✓</span> heavy rain</div>
+        <div class="pair"><span class="no">✗</span> <s>strong rain</s></div>
+        <div class="pair"><span class="ok">✓</span> strong tea</div>
+        <div class="pair"><span class="no">✗</span> <s>heavy tea</s></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <h2><span class="sec-num">2</span>Two ways to build language</h2>
+  <p class="lede">Sinclair's most influential move: two principles of how speakers put language together. Toggle to compare them.</p>
+  <div class="seg" role="group" aria-label="Principle">
+    <button id="bOpen" type="button" aria-pressed="true">Open-choice principle</button>
+    <button id="bIdiom" type="button" aria-pressed="false">Idiom principle</button>
+  </div>
+  <div class="card">
+    <div id="pOpen">
+      <div class="slots">
+        <div class="slot"><small>Slot 1</small>The manager<div class="ghost">a storm · she · Ravi…</div></div>
+        <div class="slot"><small>Slot 2</small>announced<div class="ghost">denied · wrote · sang…</div></div>
+        <div class="slot"><small>Slot 3</small>the plan<div class="ghost">a rule · the news…</div></div>
+        <div class="slot"><small>Slot 4</small>yesterday<div class="ghost">in May · loudly…</div></div>
+      </div>
+      <p class="principle-note"><b>The textbook picture.</b> Each slot is filled independently by any word the grammar allows. Language is a huge set of single-word choices.</p>
+    </div>
+    <div id="pIdiom" hidden>
+      <div class="chunk">as a matter of fact</div>
+      <p class="principle-note"><b>Closer to real use.</b> Speakers often select a ready-made or semi-fixed phrase in one move. Sinclair argues this idiom principle covers far more of ordinary language than traditional grammar and dictionaries recognised, and you can only see it in large amounts of data.</p>
+    </div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2><span class="sec-num">3</span>Concordance lab</h2>
+  <p class="lede">Reading concordance lines is the core skill. Try it on the phrase <span class="kw">set in</span>, one of the items Sinclair discusses as behaving in a surprisingly one-sided way.</p>
+  <div class="tools">
+    <button class="btn" id="bSort" type="button" aria-pressed="false">Sort by collocate</button>
+    <button class="btn" id="bColor" type="button" aria-pressed="false">Colour the collocates</button>
+  </div>
+  <div class="kwic-scroll"><div class="kwic" id="kwic" role="table" aria-label="Constructed concordance lines for set in"></div></div>
+  <div class="stat" id="stat">Read the lines first, then switch on the colours.</div>
+  <p class="caption">These lines are <b>constructed for teaching</b> and are not real corpus output. Reproduce the exercise in your own corpus with AntConc, Sketch Engine, CQPweb, or #LancsBox.</p>
+  <div class="steps4">
+    <div><b>Sort</b><br>Sort by the word just left or right of the node to bring repeated patterns together.</div>
+    <div><b>Scan</b><br>What kinds of words keep appearing? Notice sets, not single words.</div>
+    <div><b>Group</b><br>Cluster similar lines and count them. Tendencies are proportions.</div>
+    <div><b>Look for exceptions</b><br>Counter-examples (like the last line) show that patterns are tendencies, not laws.</div>
+  </div>
+</section>
+
+<section id="prosody">
+  <h2><span class="sec-num">4</span>Toward semantic prosody</h2>
+  <p class="lede">Collocation is the door. Behind it, Sinclair's later work describes a word's behaviour as layers of an <b>extended unit of meaning</b>. Click each layer, shown with <i>set in</i> as the running example.</p>
+  <div class="layers" id="layers"></div>
+  <div class="layer-detail" id="layerDetail"></div>
+
+  <div class="origin">
+    <b>Where the term comes from.</b> In the 1991 book Sinclair observes that some words keep a particular kind of company, for example <i>set in</i> and <i>happen</i> attracting unpleasant subjects. The label <b>semantic prosody</b> was later coined by Louw (1993), borrowing "prosody" from Firth's prosodic phonology, where a feature spreads across a stretch of speech. Sinclair subsequently framed it as the part of a unit of meaning that expresses the speaker's attitude or purpose. Check exact wording and page references in your own copies before citing.
+  </div>
+
+  <h3 style="margin-top:28px">Examples widely cited in the literature</h3>
+  <div class="prosody-cards">
+    <div class="pc neg"><div class="node">set in</div><div class="col">rot, decay, despair, infection</div><span class="pill">unpleasant</span><small>Sinclair 1991</small></div>
+    <div class="pc neg"><div class="node">happen</div><div class="col">accidents, unpleasant events</div><span class="pill">unpleasant</span><small>Sinclair 1991</small></div>
+    <div class="pc neg"><div class="node">cause</div><div class="col">problems, damage, death, concern</div><span class="pill">unpleasant</span><small>Stubbs 1995</small></div>
+    <div class="pc pos"><div class="node">provide</div><div class="col">support, information, opportunity</div><span class="pill">favourable</span><small>Stubbs 1995, as contrast to <i>cause</i></small></div>
+  </div>
+  <p class="caption">Treat these as hypotheses to test in your own corpora, not as settled facts. A word's prosody can differ by corpus, register, and period.</p>
+</section>
+
+<section id="workflow">
+  <h2><span class="sec-num">5</span>A workflow for your research</h2>
+  <p class="lede">A starting scaffold for a corpus study of semantic prosody. Part II gives you a worksheet for each step.</p>
+  <div class="timeline">
+    <div class="tl" data-n="1"><h3>Frame the question</h3><p>Pick node word(s) and an angle: one word's prosody, near-synonyms compared, or one word across corpora.</p></div>
+    <div class="tl" data-n="2"><h3>Choose and justify your corpora</h3><p>Size, register, time period, balance. Prosody is always relative to the corpus you sampled.</p></div>
+    <div class="tl" data-n="3"><h3>Extract concordances and collocates</h3><p>Set a span (e.g. ±4 or ±5), a minimum frequency, and an association measure.</p><div class="tags"><span class="tag">MI</span><span class="tag">t-score</span><span class="tag">log-likelihood</span><span class="tag">logDice</span></div></div>
+    <div class="tl" data-n="4"><h3>Group collocates by meaning</h3><p>Sort collocates into semantic sets (semantic preference), for example states of deterioration or emotions.</p></div>
+    <div class="tl" data-n="5"><h3>Judge the prosody with a coding scheme</h3><p>Hand-code a sample of lines for the attitude or evaluation they convey. Write a coding manual and, if possible, check agreement with a second coder.</p></div>
+    <div class="tl" data-n="6"><h3>Check the wider context and report</h3><p>Look beyond the span at the clause and discourse level, then report proportions, examples, and your criteria.</p></div>
+  </div>
+  <div class="warn"><b>Watch-outs to plan for</b>
+    <ul>
+      <li>Association measures differ: MI favours rare, exclusive pairings, while t-score favours frequent ones.</li>
+      <li>"Positive" and "negative" are judgments. Define them, and consider whether you are coding word polarity or the attitude the whole line expresses (Hunston 2007 discusses this).</li>
+      <li>Irony, negation, and quotation can flip what a line does, so verify manually.</li>
+      <li>The concept itself has critics (e.g. Whitsitt 2005), so expect to defend how you operationalise it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PART II ============ -->
+<div class="part">
+  <div class="eyebrow">Part II</div>
+  <h2 class="part-title">Research toolkit</h2>
+  <p class="lede">Fillable worksheets for each stage of a semantic prosody study. Use the buttons at the end of Section 10 to export your worksheet as Markdown and your coding sheet as CSV.</p>
+  <div class="local-note"><b>Privacy:</b> everything you type is saved in this browser only (localStorage) on this device. Nothing is sent anywhere. Clear your browser data or use Reset to remove it.</div>
+</div>
+
+<section id="t-corpus" data-export="Question and corpus selection">
+  <h2><span class="sec-num">6</span>Question and corpus selection</h2>
+  <p class="lede">State the question, then document each corpus so a reader can judge what your findings can and cannot claim.</p>
+  <div class="fgrid" id="qFields"></div>
+  <h3 style="margin-top:28px">Corpus comparison sheet</h3>
+  <p class="caption" style="margin-top:2px">Use column B only if you compare corpora.</p>
+  <div class="tbl-scroll"><table class="cmp" id="cmpTable"></table></div>
+  <h3 style="margin-top:28px">Selection criteria to think through</h3>
+  <div class="checks" id="selChecks"></div>
+  <div class="warnbox"><b>Before you use GitHub:</b> many corpora restrict redistributing text. Check the licence before committing concordance lines or your coding sheet to a public repository. Consider sharing IDs, offsets, and your codes instead of the text itself.</div>
+</section>
+
+<section id="t-extract" data-export="Query and extraction settings">
+  <h2><span class="sec-num">7</span>Query and extraction settings</h2>
+  <p class="lede">Record every parameter, since small choices (span, threshold, statistic) change the collocates you see.</p>
+  <div class="fgrid" id="eFields"></div>
+  <div class="warn" style="margin-top:20px"><b>Reminders</b>
+    <ul>
+      <li>State whether you searched a lemma or specific word forms.</li>
+      <li>Justify the frequency threshold and the statistic instead of using defaults silently.</li>
+      <li>If you sample lines, record how (for example, a random sample and how it was drawn) so it can be repeated.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="t-codebook" data-export="Codebook">
+  <h2><span class="sec-num">8</span>Codebook</h2>
+  <p class="lede">A draft codebook you can edit. The suggested definitions are starting points, so adapt them to your node words and corpus and write anchor examples from your own data.</p>
+  <div class="local-note" style="background:var(--surface);border:1px solid var(--line)"><b>Two-step logic.</b> First decide whether a line is the <i>target sense</i> at all. Then code the evaluation the writer or speaker conveys about the situation the node word participates in, not merely the polarity of one nearby word.</div>
+  <div class="cb" id="cbItems"></div>
+  <h3 style="margin-top:28px">Rules for special cases</h3>
+  <p class="caption" style="margin-top:2px">Decide these before coding and apply them consistently.</p>
+  <div class="fgrid" id="cbRules"></div>
+</section>
+
+<section id="t-sandbox">
+  <h2><span class="sec-num">9</span>Coding sandbox</h2>
+  <p class="lede">Paste concordance lines, code them, and get proportions and inter-coder agreement (Cohen's kappa) as you go.</p>
+  <div class="tools">
+    <button class="btn primary" id="addRow" type="button">+ Add row</button>
+    <button class="btn" id="loadDemo" type="button">Load demo lines</button>
+    <button class="btn" id="clearRows" type="button">Clear rows</button>
+  </div>
+  <details class="paste">
+    <summary>Paste many lines at once</summary>
+    <p class="caption">One concordance line per row of text. Each becomes a new row.</p>
+    <textarea id="pasteBox" placeholder="Paste lines here, one per line"></textarea>
+    <div class="tools"><button class="btn" id="pasteAdd" type="button">Add pasted lines</button></div>
+  </details>
+  <div class="sb-scroll">
+    <table class="sb">
+      <thead><tr><th>#</th><th>Concordance line</th><th>Target sense?</th><th>Semantic set</th><th>Coder 1</th><th>Coder 2</th><th>Notes</th><th></th></tr></thead>
+      <tbody id="sbBody"></tbody>
+    </table>
+  </div>
+  <div class="sumbox" id="sumBox"></div>
+  <p class="caption">Only rows marked as target sense are counted. The demo lines are constructed for illustration and not real corpus data.</p>
+</section>
+
+<section id="t-report" data-export="Reporting checklist">
+  <h2><span class="sec-num">10</span>Reporting checklist</h2>
+  <p class="lede">Tick items as your write-up becomes complete.</p>
+  <div class="checks" id="repChecks"></div>
+  <div class="tools" style="margin-top:22px">
+    <button class="btn primary" id="expMd" type="button">Download worksheet (.md)</button>
+    <button class="btn primary" id="expCsv" type="button">Download coding sheet (.csv)</button>
+    <button class="btn" id="resetAll" type="button">Reset everything</button>
+  </div>
+</section>
+
+<section id="reading">
+  <h2><span class="sec-num">11</span>Reading path</h2>
+  <ul class="reading">
+    <li><b>Sinclair (1991)</b>, <i>Corpus, Concordance, Collocation</i>. OUP.<span class="why">The foundation: corpus evidence, collocation, the idiom principle.</span></li>
+    <li><b>Louw (1993)</b>, "Irony in the text or insincerity in the writer?", in Baker, Francis &amp; Tognini-Bonelli (eds), <i>Text and Technology</i>.<span class="why">Where "semantic prosody" is named.</span></li>
+    <li><b>Sinclair (1996)</b>, "The search for units of meaning", <i>Textus</i>.<span class="why">The extended unit of meaning and its layers.</span></li>
+    <li><b>Stubbs (1995)</b>, "Collocations and semantic profiles", <i>Functions of Language</i>.<span class="why">Systematic corpus evidence and methodological cautions.</span></li>
+    <li><b>Partington (2004)</b>, "Utterly content in each other's company", <i>International Journal of Corpus Linguistics</i>.<span class="why">Clarifies prosody versus semantic preference.</span></li>
+    <li><b>Hunston (2007)</b>, "Semantic prosody revisited", <i>International Journal of Corpus Linguistics</i>.<span class="why">Prosody as attitude and discourse function.</span></li>
+    <li><b>Whitsitt (2005)</b>, "A critique of the concept of semantic prosody", <i>International Journal of Corpus Linguistics</i>.<span class="why">The main critique to engage with.</span></li>
+    <li><b>Xiao &amp; McEnery (2006)</b>, "Collocation, semantic prosody, and near synonymy", <i>Applied Linguistics</i>.<span class="why">A worked cross-linguistic, near-synonym design.</span></li>
+    <li><b>Hoey (2005)</b>, <i>Lexical Priming</i>; <b>Sinclair (2004)</b>, <i>Trust the Text</i>.<span class="why">Theory and the later statement of the approach.</span></li>
+  </ul>
+
+  <h3 style="margin-top:32px">Quick self-check</h3>
+  <details><summary>Why is "strong rain" odd if it is grammatical?</summary><p>Collocation is about habitual word partnership, not grammatical well-formedness. Speakers overwhelmingly say "heavy rain".</p></details>
+  <details><summary>Which principle does "as a matter of fact" illustrate?</summary><p>The idiom principle: a semi-fixed unit chosen as one piece rather than assembled slot by slot.</p></details>
+  <details><summary>How do collocation and semantic prosody differ?</summary><p>Collocation is which words co-occur. Semantic prosody is the attitude or evaluative colouring that the pattern of collocates gives the node word, such as a consistently unpleasant environment.</p></details>
+  <details><summary>Why does your choice of corpus matter?</summary><p>Prosody is a tendency observed in a sample. Different registers, periods, and balances can yield different tendencies, so the corpus must be justified and described.</p></details>
+</section>
+
+<footer>Study aid prepared as a starting overview. Verify all citations, quotations, and page references against the sources, and adapt the codebook and parameters to your own design.</footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var STORE='sp-studykit-v1';
+  var state={f:{},chk:{},rows:[],theme:''};
+  function load(){try{var s=JSON.parse(localStorage.getItem(STORE)||'{}');if(s&&typeof s==='object'){state.f=s.f||{};state.chk=s.chk||{};state.rows=Array.isArray(s.rows)?s.rows:[];state.theme=s.theme||'';}}catch(e){}}
+  function save(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){}}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function attr(s){return esc(s).replace(/"/g,'&quot;')}
+  load();
+
+  /* ---------- theme ---------- */
+  var themeBtn=document.getElementById('themeBtn');
+  function applyTheme(){
+    var r=document.documentElement;
+    if(state.theme==='light'||state.theme==='dark'){r.setAttribute('data-theme',state.theme)}else{r.removeAttribute('data-theme')}
+    themeBtn.textContent='Theme: '+(state.theme||'auto');
+  }
+  themeBtn.onclick=function(){state.theme=state.theme===''?'light':(state.theme==='light'?'dark':'');save();applyTheme();};
+  applyTheme();
+
+  /* ---------- Part I: principles ---------- */
+  var bO=document.getElementById('bOpen'),bI=document.getElementById('bIdiom'),pO=document.getElementById('pOpen'),pI=document.getElementById('pIdiom');
+  function setP(open){bO.setAttribute('aria-pressed',open);bI.setAttribute('aria-pressed',!open);pO.hidden=!open;pI.hidden=open;}
+  bO.onclick=function(){setP(true)};bI.onclick=function(){setP(false)};
+
+  /* ---------- Part I: concordance lab ---------- */
+  var lines=[
+    {pre:"Within hours of the crash,",k:"panic",mid:"",post:"and the market slid further.",v:"neg"},
+    {pre:"By the third winter,",k:"decay",mid:"had",post:"across the whole neighbourhood.",v:"neg"},
+    {pre:"Doctors feared that",k:"gangrene",mid:"would",post:"before the ambulance arrived.",v:"neg"},
+    {pre:"Around midnight,",k:"exhaustion",mid:"finally",post:"and he stopped arguing.",v:"neg"},
+    {pre:"Without repairs,",k:"rot",mid:"will",post:"within a single season.",v:"neg"},
+    {pre:"After the deal collapsed,",k:"bitterness",mid:"quickly",post:"between the two families.",v:"neg"},
+    {pre:"Once",k:"boredom",mid:"",post:"and the children wandered off.",v:"neg"},
+    {pre:"As the drought deepened,",k:"despair",mid:"",post:"among the farmers.",v:"neg"},
+    {pre:"By April,",k:"warm weather",mid:"had",post:"and the garden woke up.",v:"pos"}
+  ];
+  var sorted=false,colored=false,kwic=document.getElementById('kwic'),stat=document.getElementById('stat');
+  function renderKwic(){
+    var data=lines.slice();
+    if(sorted){data.sort(function(a,b){return a.k.localeCompare(b.k)})}
+    kwic.innerHTML=data.map(function(d){
+      return '<div class="kwic-row" role="row"><span class="l">'+esc(d.pre)+' <b class="k '+d.v+(colored?' on':'')+'">'+esc(d.k)+'</b>'+(d.mid?' '+esc(d.mid):'')+'</span><span class="n">set in</span><span class="r">'+esc(d.post)+'</span></div>';
+    }).join('');
+    if(colored){
+      var neg=lines.filter(function(d){return d.v==='neg'}).length;
+      stat.innerHTML='<b>'+neg+' of '+lines.length+'</b> lines pair <i>set in</i> with an unpleasant state or event. That skew is what a semantic prosody claim is built on. The final line is a counter-example: prosody is a strong tendency, not an absolute rule.';
+    }else{stat.textContent='Read the lines first, then switch on the colours.';}
+  }
+  var bS=document.getElementById('bSort'),bC=document.getElementById('bColor');
+  bS.onclick=function(){sorted=!sorted;bS.setAttribute('aria-pressed',sorted);renderKwic()};
+  bC.onclick=function(){colored=!colored;bC.setAttribute('aria-pressed',colored);renderKwic()};
+  renderKwic();
+
+  /* ---------- Part I: layers ---------- */
+  var layers=[
+    {t:"Core",s:"The node word or phrase",ex:"<b>set in</b>",d:"The item you search for. Sinclair treats the unit of meaning as centred on a core, but the meaning belongs to the whole pattern around it."},
+    {t:"Collocation",s:"Which words co-occur nearby",ex:"<b>rot, decay, despair, panic, infection</b>",d:"The specific words that keep company with the core, established by frequency and association statistics across the corpus."},
+    {t:"Colligation",s:"Which grammatical patterns it favours",ex:"<b>abstract noun subject + set in</b>, usually with no object",d:"The grammatical company the core keeps, such as typical subjects, tenses, or clause positions. Confirm the actual patterns in your data."},
+    {t:"Semantic preference",s:"Which meaning classes it attracts",ex:"<b>states of deterioration or emotional decline</b>",d:"A lexical set or semantic field that the collocates fall into. It generalises beyond individual words: a class, not a list."},
+    {t:"Semantic prosody",s:"The attitude or purpose the unit expresses",ex:"<b>the speaker signals something unwelcome</b>",d:"The evaluative or pragmatic function of the whole pattern. This is the layer your research targets, and it is a judgment you must define and justify with a coding scheme."}
+  ];
+  var box=document.getElementById('layers'),det=document.getElementById('layerDetail');
+  function pick(i){
+    Array.prototype.forEach.call(box.children,function(el,j){el.setAttribute('aria-pressed',i===j)});
+    var L=layers[i];
+    det.innerHTML='<h3>'+L.t+'</h3><p>'+L.d+'</p><p><span class="caption">Running example:</span> '+L.ex+'</p>';
+  }
+  layers.forEach(function(L,i){
+    var b=document.createElement('button');
+    b.type='button';b.className='layer';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="no-">'+(i+1)+'</span><span><span class="t">'+L.t+'</span><span class="s">'+L.s+'</span></span>';
+    b.onclick=function(){pick(i)};
+    box.appendChild(b);
+  });
+  pick(4);
+
+  /* ---------- Part II: field builders ---------- */
+  var DEF={};
+  function fld(k,label,kind,hint,def){
+    var id='f_'+k,inner;
+    if(def!==undefined){DEF[k]=def}
+    if(kind==='area'){inner='<textarea class="f" id="'+id+'" data-k="'+k+'" data-label="'+attr(label)+'" rows="3"></textarea>';}
+    else if(kind.indexOf('select:')===0){
+      inner='<select class="f" id="'+id+'" data-k="'+k+'" data-label="'+attr(label)+'"><option value="">—</option>'+kind.slice(7).split('|').map(function(o){return '<option value="'+attr(o)+'">'+esc(o)+'</option>'}).join('')+'</select>';
+    }else if(kind==='number'){inner='<input class="f" type="number" min="0" id="'+id+'" data-k="'+k+'" data-label="'+attr(label)+'">';}
+    else{inner='<input class="f" type="text" id="'+id+'" data-k="'+k+'" data-label="'+attr(label)+'">';}
+    return '<div><label class="fl" for="'+id+'">'+esc(label)+'</label>'+inner+(hint?'<div class="hint">'+esc(hint)+'</div>':'')+'</div>';
+  }
+  function chkList(containerId,prefix,items){
+    document.getElementById(containerId).innerHTML=items.map(function(t,i){
+      var k=prefix+i;
+      return '<label class="check"><input type="checkbox" class="chk" data-k="'+k+'" data-label="'+attr(t)+'"><span>'+t+'</span></label>';
+    }).join('');
+  }
+
+  // Question fields
+  document.getElementById('qFields').innerHTML=[
+    fld('q_rq','Research question','area','For example: does node word X carry an unfavourable prosody in corpus A, and does that differ in corpus B?'),
+    fld('q_hyp','Hypothesis or expectation','area','What do you expect to find, and why?'),
+    fld('q_nodes','Node word(s) or lemma(s)','text','List every form you plan to search'),
+    fld('q_design','Design','select:Single word, single corpus|Near-synonyms compared|One word across corpora|One word across time periods','')
+  ].join('');
+
+  // Corpus compare table
+  var cmpRows=['Name','Source, URL, and version','Size (tokens)','Register or genre','Time span','Variety (e.g. US, UK)','Sampling and balance','Annotation (lemma, POS)','Licence and access','Known limitations'];
+  var cmp='<thead><tr><th>Attribute</th><th>Corpus A</th><th>Corpus B (optional)</th></tr></thead><tbody>';
+  cmpRows.forEach(function(r,i){
+    cmp+='<tr><td class="rl">'+esc(r)+'</td>'+['A','B'].map(function(c){
+      var k='c'+c+'_'+i;
+      return '<td><input class="f" type="text" data-k="'+k+'" data-label="Corpus '+c+' · '+attr(r)+'" aria-label="Corpus '+c+', '+attr(r)+'"></td>';
+    }).join('')+'</tr>';
+  });
+  document.getElementById('cmpTable').innerHTML=cmp+'</tbody>';
+
+  chkList('selChecks','sel_',[
+    '<b>Node frequency:</b> enough hits to support your analysis (state your minimum and justify it).',
+    '<b>Register and genre:</b> matches the discourse you want to make claims about.',
+    '<b>Time span and variety:</b> the period and variety are stated and appropriate.',
+    '<b>Balance and sampling:</b> how texts were selected is documented and its limits acknowledged.',
+    '<b>Annotation:</b> lemmatisation and tagging are good enough for your queries.',
+    '<b>Dispersion:</b> hits come from many texts or speakers, not just one or two.',
+    '<b>Access, licence, and ethics:</b> you may use, quote, and share the data as planned.',
+    '<b>Reproducibility:</b> corpus version, tool, and extraction date are recorded.',
+    '<b>Comparability</b> (if comparing corpora): sizes are normalised and registers comparable.'
+  ]);
+
+  // Extraction fields
+  document.getElementById('eFields').innerHTML=[
+    fld('e_search','Search string or query syntax (e.g. CQL)','text',''),
+    fld('e_forms','Lemma or word forms searched','text',''),
+    fld('e_left','Span to the left (words)','number',''),
+    fld('e_right','Span to the right (words)','number',''),
+    fld('e_minfreq','Minimum collocate frequency','number','Justify in your write-up'),
+    fld('e_mintexts','Minimum number of texts (dispersion)','number',''),
+    fld('e_measure','Association measure(s)','text','For example MI, t-score, log-likelihood, logDice'),
+    fld('e_thresh','Statistic threshold(s)','text',''),
+    fld('e_filters','Stoplist or other filters','text',''),
+    fld('e_tool','Tool and version','text','For example AntConc, Sketch Engine, CQPweb, #LancsBox'),
+    fld('e_sample','Concordance lines sampled','number','Number analysed per node word or corpus'),
+    fld('e_sampling','Sampling method','area','For example random sample; how it was drawn so it can be repeated'),
+    fld('e_date','Date of extraction','text','')
+  ].join('');
+
+  // Codebook
+  var CB=[
+    {n:'Unfavourable',c:'var(--neg)',d:'The line presents the situation or entity the node word participates in as undesirable, harmful, or unwelcome.',r:'Judge the stance conveyed about the whole situation, not the polarity of a single nearby word.'},
+    {n:'Favourable',c:'var(--pos)',d:'The line presents the situation or entity the node word participates in as desirable, beneficial, or welcome.',r:'Same rule as above: judge the stance of the whole line.'},
+    {n:'Neutral',c:'var(--muted)',d:'No evaluative stance is detectable in the line.',r:'Use only after checking the wider context. Do not default to Neutral when unsure.'},
+    {n:'Unclear',c:'var(--c2)',d:'The line cannot be judged even after expanding the context.',r:'Record why in Notes and report the count.'},
+    {n:'Exclude (not target sense)',c:'var(--accent)',d:'Not the sense under study, a tagging error, a duplicate, or an unusable fragment.',r:'Mark Target sense as No in the sandbox, and count and report exclusions.'}
+  ];
+  document.getElementById('cbItems').innerHTML=CB.map(function(c,i){
+    return '<div class="cb-item" style="--cc:'+c.c+'"><h3>'+esc(c.n)+'</h3><div class="fgrid">'+
+      fld('cb'+i+'_d',c.n+' · Definition','area','',c.d)+
+      fld('cb'+i+'_r',c.n+' · Decision rule','area','',c.r)+
+      fld('cb'+i+'_x',c.n+' · Anchor examples','area','Paste 2 or 3 clear examples from your corpus')+
+      '</div></div>';
+  }).join('');
+  document.getElementById('cbRules').innerHTML=[
+    fld('cr_neg','Negation','area','',''),
+    fld('cr_irony','Irony and sarcasm','area','',''),
+    fld('cr_quote','Quotation and reported speech','area','Decide whose stance you are coding: the quoted speaker or the reporting writer'),
+    fld('cr_mixed','Mixed evaluations in one line','area','',''),
+    fld('cr_pref','Semantic preference (optional second tier)','area','If you record the semantic set of the collocate (e.g. deterioration, emotion), define the sets here')
+  ].join('');
+  DEF.cr_neg='Decide before coding and apply consistently, for example flag negated lines in Notes and report them separately.';
+  DEF.cr_irony='Code the intended evaluation and flag the line in Notes.';
+  DEF.cr_mixed='Code the evaluation of the situation the node word participates in, and note the mix.';
+
+  chkList('repChecks','rep_',[
+    'Research question and hypothesis stated',
+    'Corpora described: size, register, period, and version',
+    'Node forms or lemmas and the query syntax given',
+    'Span, frequency threshold, and association measure(s) justified',
+    'Sampling method for concordance lines documented (repeatable)',
+    'Codebook reproduced (appendix) with anchor examples',
+    'Coding procedure described: who coded, blinded or not, how disagreements were resolved',
+    'Inter-coder agreement reported with the statistic and the number of items',
+    'Exclusions counted and reasons stated',
+    'Proportions reported with counts, plus illustrative example lines',
+    'Counter-examples discussed',
+    'Limitations addressed: corpus-relativity and subjectivity of evaluation',
+    'Data availability and licence statement included'
+  ]);
+
+  /* apply saved state to fields */
+  var fields=document.querySelectorAll('.f');
+  Array.prototype.forEach.call(fields,function(el){
+    var k=el.getAttribute('data-k');
+    var v=state.f.hasOwnProperty(k)?state.f[k]:(DEF[k]!==undefined?DEF[k]:'');
+    el.value=v;
+    var h=function(){state.f[k]=el.value;save();};
+    el.addEventListener('input',h);el.addEventListener('change',h);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.chk'),function(el){
+    var k=el.getAttribute('data-k');
+    el.checked=!!state.chk[k];
+    el.addEventListener('change',function(){state.chk[k]=el.checked;save();});
+  });
+
+  /* ---------- Coding sandbox ---------- */
+  var CODES=['Unfavourable','Favourable','Neutral','Unclear'];
+  var COLORS={Unfavourable:'var(--neg)',Favourable:'var(--pos)',Neutral:'var(--muted)',Unclear:'var(--c2)'};
+  var tb=document.getElementById('sbBody'),sum=document.getElementById('sumBox');
+  function newRow(line){return {line:line||'',sense:'Yes',set:'',c1:'',c2:'',note:''}}
+  if(!state.rows.length){state.rows=[newRow(),newRow(),newRow()];}
+  function opts(list,sel){return list.map(function(v){return '<option value="'+attr(v)+'"'+(v===sel?' selected':'')+'>'+(v?esc(v):'—')+'</option>'}).join('')}
+  function renderRows(){
+    tb.innerHTML=state.rows.map(function(r,i){
+      return '<tr data-i="'+i+'"><td class="idx">'+(i+1)+'</td>'+
+        '<td><textarea class="sbx" data-fld="line" rows="2" aria-label="Concordance line '+(i+1)+'">'+esc(r.line)+'</textarea></td>'+
+        '<td><select class="sbx" data-fld="sense" aria-label="Target sense">'+opts(['Yes','No'],r.sense)+'</select></td>'+
+        '<td><input class="sbx" data-fld="set" value="'+attr(r.set)+'" aria-label="Semantic set"></td>'+
+        '<td><select class="sbx" data-fld="c1" aria-label="Coder 1">'+opts([''].concat(CODES),r.c1)+'</select></td>'+
+        '<td><select class="sbx" data-fld="c2" aria-label="Coder 2">'+opts([''].concat(CODES),r.c2)+'</select></td>'+
+        '<td><input class="sbx" data-fld="note" value="'+attr(r.note)+'" aria-label="Notes"></td>'+
+        '<td><button type="button" class="btn" data-del="'+i+'" aria-label="Delete row '+(i+1)+'">✕</button></td></tr>';
+    }).join('');
+  }
+  function stats(){
+    var valid=state.rows.filter(function(r){return r.sense==='Yes'});
+    var excluded=state.rows.length-valid.length;
+    var counts={};CODES.forEach(function(c){counts[c]=0});
+    var n1=0;
+    valid.forEach(function(r){if(r.c1&&counts.hasOwnProperty(r.c1)){counts[r.c1]++;n1++;}});
+    var pairs=valid.filter(function(r){return r.c1&&r.c2});
+    var kappa=null,po=null;
+    if(pairs.length){
+      var agree=pairs.filter(function(r){return r.c1===r.c2}).length;
+      po=agree/pairs.length;
+      var pe=0;
+      CODES.forEach(function(c){
+        var a=pairs.filter(function(r){return r.c1===c}).length/pairs.length;
+        var b=pairs.filter(function(r){return r.c2===c}).length/pairs.length;
+        pe+=a*b;
+      });
+      kappa=(1-pe===0)?(po===1?1:null):(po-pe)/(1-pe);
+    }
+    return {total:state.rows.length,excluded:excluded,counts:counts,n1:n1,pairs:pairs.length,po:po,kappa:kappa};
+  }
+  function summarize(){
+    var s=stats();
+    var html='<b>Summary (Coder 1)</b><div class="caption" style="margin-top:2px">'+s.total+' rows · '+s.excluded+' excluded as not target sense · '+s.n1+' coded</div>';
+    if(s.n1){
+      html+='<div class="bar" role="img" aria-label="Distribution of codes">'+CODES.map(function(c){
+        return s.counts[c]?'<span style="width:'+(100*s.counts[c]/s.n1)+'%;background:'+COLORS[c]+'"></span>':'';
+      }).join('')+'</div><div class="legend">'+CODES.map(function(c){
+        return '<span><i style="background:'+COLORS[c]+'"></i>'+c+': '+s.counts[c]+' ('+(100*s.counts[c]/s.n1).toFixed(0)+'%)</span>';
+      }).join('')+'</div>';
+    }else{html+='<p class="caption">Code some lines to see proportions.</p>';}
+    if(s.pairs){
+      html+='<div class="kappa"><b>Agreement</b> on '+s.pairs+' doubly-coded lines: '+(100*s.po).toFixed(0)+'% raw agreement'+(s.kappa===null?'; kappa undefined for these data':', Cohen\'s κ = '+s.kappa.toFixed(2))+'. Report the statistic, the number of items, and the agreement threshold you set in advance.</div>';
+    }else{html+='<div class="kappa caption">Fill in Coder 2 for some lines to compute agreement.</div>';}
+    sum.innerHTML=html;
+  }
+  tb.addEventListener('input',function(e){
+    var tr=e.target.closest('tr');if(!tr)return;
+    var f=e.target.getAttribute('data-fld');if(!f)return;
+    state.rows[+tr.getAttribute('data-i')][f]=e.target.value;save();summarize();
+  });
+  tb.addEventListener('change',function(e){
+    var tr=e.target.closest('tr');if(!tr)return;
+    var f=e.target.getAttribute('data-fld');if(!f)return;
+    state.rows[+tr.getAttribute('data-i')][f]=e.target.value;save();summarize();
+  });
+  tb.addEventListener('click',function(e){
+    var b=e.target.closest('[data-del]');if(!b)return;
+    state.rows.splice(+b.getAttribute('data-del'),1);
+    if(!state.rows.length)state.rows=[newRow()];
+    save();renderRows();summarize();
+  });
+  document.getElementById('addRow').onclick=function(){state.rows.push(newRow());save();renderRows();summarize();};
+  document.getElementById('clearRows').onclick=function(){
+    if(confirm('Remove all rows from the coding sandbox?')){state.rows=[newRow(),newRow(),newRow()];save();renderRows();summarize();}
+  };
+  document.getElementById('pasteAdd').onclick=function(){
+    var box=document.getElementById('pasteBox');
+    var ls=box.value.split(/\r?\n/).map(function(x){return x.trim()}).filter(Boolean);
+    if(!ls.length)return;
+    var blank=state.rows.every(function(r){return !r.line&&!r.c1&&!r.c2&&!r.set&&!r.note});
+    if(blank)state.rows=[];
+    ls.forEach(function(l){state.rows.push(newRow(l))});
+    box.value='';save();renderRows();summarize();
+  };
+  document.getElementById('loadDemo').onclick=function(){
+    if(!confirm('Replace the current rows with the constructed demo lines?'))return;
+    state.rows=lines.map(function(d,i){
+      var c=d.v==='neg'?'Unfavourable':'Favourable';
+      var c2=(i===6)?'Neutral':c;
+      return {line:d.pre+' '+d.k+(d.mid?' '+d.mid:'')+' [set in] '+d.post,sense:'Yes',set:d.v==='neg'?'deterioration or emotional decline':'seasonal change',c1:c,c2:c2,note:(i===6?'coders differed':'')};
+    });
+    save();renderRows();summarize();
+  };
+  renderRows();summarize();
+
+  /* ---------- Export ---------- */
+  function dl(name,text,type){
+    var b=new Blob([text],{type:type});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download=name;
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
+  }
+  document.getElementById('expMd').onclick=function(){
+    var out=['# Semantic prosody study worksheet','','_Generated '+new Date().toISOString().slice(0,10)+'_',''];
+    Array.prototype.forEach.call(document.querySelectorAll('[data-export]'),function(sec){
+      out.push('## '+sec.getAttribute('data-export'),'');
+      Array.prototype.forEach.call(sec.querySelectorAll('.f'),function(el){
+        var v=(el.value||'').trim().replace(/\s*\n+\s*/g,' ');
+        out.push('- **'+el.getAttribute('data-label')+':** '+(v||'_(blank)_'));
+      });
+      Array.prototype.forEach.call(sec.querySelectorAll('.chk'),function(el){
+        out.push('- ['+(el.checked?'x':' ')+'] '+el.getAttribute('data-label'));
+      });
+      out.push('');
+    });
+    var s=stats();
+    out.push('## Coding summary','','- Rows: '+s.total+' (excluded as not target sense: '+s.excluded+'; coded by Coder 1: '+s.n1+')');
+    CODES.forEach(function(c){out.push('- '+c+': '+s.counts[c]+(s.n1?' ('+(100*s.counts[c]/s.n1).toFixed(0)+'%)':''))});
+    if(s.pairs){out.push('- Agreement on '+s.pairs+' doubly-coded lines: '+(100*s.po).toFixed(0)+'%'+(s.kappa===null?'':', Cohen\'s kappa = '+s.kappa.toFixed(2)));}
+    out.push('');
+    dl('semantic-prosody-worksheet.md',out.join('\n'),'text/markdown;charset=utf-8');
+  };
+  document.getElementById('expCsv').onclick=function(){
+    function q(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'}
+    var rows=[['id','line','target_sense','semantic_set','coder1','coder2','notes'].map(q).join(',')];
+    state.rows.forEach(function(r,i){rows.push([i+1,r.line,r.sense,r.set,r.c1,r.c2,r.note].map(q).join(','))});
+    dl('semantic-prosody-coding.csv','\ufeff'+rows.join('\r\n'),'text/csv;charset=utf-8');
+  };
+  document.getElementById('resetAll').onclick=function(){
+    if(confirm('Reset all worksheets, checklists, and coding rows saved in this browser? This cannot be undone.')){
+      try{localStorage.removeItem(STORE)}catch(e){}
+      location.reload();
+    }
+  };
+})();
+</script>
+</body>
+</html>
